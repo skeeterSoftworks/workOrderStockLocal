@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class MaterialOrderTO {
     private Long id;
+    private String code;
     private Integer quantity;
     private Long materialId;
     private String materialName;
@@ -19,4 +20,6 @@ public class MaterialOrderTO {
     private String materialProviderName;
     private String status;
     private LocalDateTime lastChanged;
+    private LocalDateTime createdAt;
+    private LocalDateTime rejectedAt;
 }
