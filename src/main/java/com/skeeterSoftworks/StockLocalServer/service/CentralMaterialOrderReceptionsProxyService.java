@@ -1,5 +1,6 @@
 package com.skeeterSoftworks.StockLocalServer.service;
 
+import com.skeeterSoftworks.StockLocalServer.to.objects.MaterialOrderReceptionInternalControlTO;
 import com.skeeterSoftworks.StockLocalServer.to.objects.MaterialOrderReceptionTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -45,6 +46,32 @@ public class CentralMaterialOrderReceptionsProxyService {
                 .uri(centralUrl + "/material-order-receptions/record")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(body)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(MaterialOrderReceptionTO.class)
+                .block();
+    }
+
+    public List<MaterialOrderReceptionTO> fetchPendingValidation() {
+        try {
+            List<MaterialOrderReceptionTO> list = webClient.get()
+                    .uri(centralUrl + "/material-order-receptions/pending-validation")
+                    .accept(MediaType.APPLICATION_JSON)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<List<MaterialOrderReceptionTO>>() {})
+                    .block();
+            return list != null ? list : Collections.emptyList();
+        } catch (Exception e) {
+            log.error("Central pending validation fetch failed: {}", e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    public MaterialOrderReceptionTO submitInternalControl(Long receptionId, MaterialOrderReceptionInternalControlTO body) {
+        return webClient.post()
+                .uri(centralUrl + "/material-order-receptions/" + receptionId + "/submit-internal-control")
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(body != null ? body : new MaterialOrderReceptionInternalControlTO())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(MaterialOrderReceptionTO.class)

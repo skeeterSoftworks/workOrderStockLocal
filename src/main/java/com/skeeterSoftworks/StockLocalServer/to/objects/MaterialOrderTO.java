@@ -22,4 +22,8 @@ public class MaterialOrderTO {
     private LocalDateTime lastChanged;
     private LocalDateTime createdAt;
     private LocalDateTime rejectedAt;
+    private Float materialDiameter;
+    private Float materialWeight;
+    private Float materialLength;
+    private Float materialWidth;
 }

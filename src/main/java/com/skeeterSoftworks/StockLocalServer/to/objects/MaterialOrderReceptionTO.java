@@ -19,4 +19,9 @@ public class MaterialOrderReceptionTO {
     private LocalDateTime receivedAt;
     private Integer receivedQuantity;
     private MaterialOrderReceptionInternalControlTO internalControl;
+    private Float materialDiameter;
+    private Float materialWeight;
+    private Float materialLength;
+    private Float materialWidth;
+    private java.util.List<MaterialReceptionStockAllocationTO> stockAllocations;
 }
