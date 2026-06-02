@@ -26,4 +26,5 @@ public class MaterialOrderTO {
     private Float materialWeight;
     private Float materialLength;
     private Float materialWidth;
+    private Boolean certificatePresent;
 }
