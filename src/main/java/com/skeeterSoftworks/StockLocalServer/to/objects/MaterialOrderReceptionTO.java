@@ -24,4 +24,5 @@ public class MaterialOrderReceptionTO {
     private Float materialLength;
     private Float materialWidth;
     private java.util.List<MaterialReceptionStockAllocationTO> stockAllocations;
+    private Boolean certificatePresent;
 }
