@@ -19,6 +19,9 @@ public class MaterialOrderReceptionTO {
     private String materialProviderName;
     private LocalDateTime receivedAt;
     private Integer receivedQuantity;
+    private String deliveryNoteNumber;
+    private Long deliveryNoteId;
+    private Boolean lineFullyReceived;
     private MaterialOrderReceptionInternalControlTO internalControl;
     private Float materialDiameter;
     private Float materialWeight;

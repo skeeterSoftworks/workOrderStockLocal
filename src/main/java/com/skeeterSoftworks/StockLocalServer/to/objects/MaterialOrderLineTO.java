@@ -14,6 +14,9 @@ public class MaterialOrderLineTO {
     private String materialCode;
     private Integer quantity;
     private Boolean received;
+    private Integer receivedQuantityTotal;
+    private Integer remainingQuantity;
+    private java.util.List<DeliveryNoteTO> deliveryNotes;
     private Float materialDiameter;
     private Float materialWeight;
     private Float materialLength;
