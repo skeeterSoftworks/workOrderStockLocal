@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,4 +29,5 @@ public class MaterialOrderTO {
     private Float materialLength;
     private Float materialWidth;
     private Boolean certificatePresent;
+    private List<MaterialOrderLineTO> lines = new ArrayList<>();
 }
