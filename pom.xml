@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.skeeterSoftworks</groupId>
 	<artifactId>StockLocalServer</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>StockLocalServer</name>
 	<description>Stock Local Server (QR + users proxy)</description>
 	<properties>
