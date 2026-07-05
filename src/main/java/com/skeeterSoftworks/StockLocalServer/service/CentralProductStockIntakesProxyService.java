@@ -1,6 +1,7 @@
 package com.skeeterSoftworks.StockLocalServer.service;
 
 import com.skeeterSoftworks.StockLocalServer.to.objects.ProductStockIntakeTO;
+import com.skeeterSoftworks.StockLocalServer.to.objects.ProductStockIntakeWorkOrderOptionTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +37,21 @@ public class CentralProductStockIntakesProxyService {
             return list != null ? list : Collections.emptyList();
         } catch (Exception e) {
             log.error("Central product stock intakes fetch failed: {}", e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    public List<ProductStockIntakeWorkOrderOptionTO> fetchWorkOrders(long productId) {
+        try {
+            List<ProductStockIntakeWorkOrderOptionTO> list = webClient.get()
+                    .uri(centralUrl + "/stock/product-intakes/work-orders?productId=" + productId)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<List<ProductStockIntakeWorkOrderOptionTO>>() {})
+                    .block();
+            return list != null ? list : Collections.emptyList();
+        } catch (Exception e) {
+            log.error("Central product stock intake work orders fetch failed: {}", e.getMessage(), e);
             throw e;
         }
     }

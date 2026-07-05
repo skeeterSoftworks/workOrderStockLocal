@@ -37,6 +37,20 @@ public class ProductStockIntakeProxyFacade {
         }
     }
 
+    @GetMapping("/work-orders")
+    public ResponseEntity<?> listWorkOrders(@RequestParam long productId) {
+        log.debug("Facade call: proxy GET /stock/product-intakes/work-orders -> central");
+        try {
+            if (productId <= 0) {
+                return ResponseEntity.badRequest().body("PRODUCT_STOCK_INTAKE_PRODUCT_REQUIRED");
+            }
+            return ResponseEntity.ok(centralProductStockIntakesProxyService.fetchWorkOrders(productId));
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return ResponseEntity.status(502).body("CENTRAL_PRODUCT_STOCK_INTAKES_UNAVAILABLE");
+        }
+    }
+
     @PostMapping("/record")
     public ResponseEntity<?> record(@RequestBody ProductStockIntakeTO body) {
         log.debug("Facade call: proxy POST /stock/product-intakes/record -> central");

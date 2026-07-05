@@ -12,6 +12,8 @@ public class ProductStockIntakeTO {
     private Long productId;
     private String productReference;
     private String productName;
+    private Long workOrderId;
+    private Integer surplusQuantity;
     private String stickerNumber;
     /** PIECES, GRAM, or KILOGRAM. */
     private String unitOfMeasure;
