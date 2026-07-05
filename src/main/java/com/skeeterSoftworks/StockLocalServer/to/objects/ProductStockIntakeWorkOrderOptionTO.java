@@ -14,6 +14,7 @@ public class ProductStockIntakeWorkOrderOptionTO {
     private Integer requiredQuantity;
     private Long producedGoodQuantity;
     private Integer receivedToStockQuantity;
+    private Integer receivedOrderQuantity;
     private Boolean internalStockDemand;
     /** INCOMPLETE or COMPLETE. */
     private String state;
